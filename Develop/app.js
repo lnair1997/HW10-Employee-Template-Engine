@@ -27,7 +27,27 @@ function addEmployee() {
                 "I don't want to add a Team Member",
             ]
         }
-    ])
+    ]).then(userChoice => {
+        if (userChoice.teamMembers === "Manager") {
+            createManager();
+        } else if (userChoice.teamMembers === "Engineer") {
+            createEngineer();
+        } else if (userChoice.teamMembers === "Intern") {
+            createIntern();
+        } else {
+            if (employees.length > 0) {
+                let html = render(employees);
+                fs.writeFile(outputPath, html, (err) => {
+                    if (err) {
+                        console.log(err);
+                    }
+                    console.log("Successful in writing a team.html file");
+                })
+            } else {
+                console.log("No employee created");
+            }
+        }
+    })
 };
 
 // Write code to use inquirer to gather information about the development team members,
