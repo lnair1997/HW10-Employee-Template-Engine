@@ -36,17 +36,108 @@ function addEmployee() {
             createIntern();
         } else {
             if (employees.length > 0) {
-                let html = render(employees);
-                fs.writeFile(outputPath, html, (err) => {
-                    if (err) {
-                        console.log(err);
-                    }
-                    console.log("Successful in writing a team.html file");
-                })
+                const html = render(employees);
+                fs.writeFile(outputPath, html, (err) => err ? console.log(err) : console.log("Successful in writing a team.html file"));
+                return;
             } else {
                 console.log("No employee created");
             }
         }
+    })
+};
+
+addEmployee();
+
+// Creating Manager ---------------------------------------------------------------------------------------
+function createManager() {
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "What is the Manager's name?",
+            name: "name"
+        },
+        {
+            type: "input",
+            message: "What is the Manager's id?",
+            name: "id"
+        },
+        {
+            type: "input",
+            message: "What is the Manager's email?",
+            name: "email"
+        },
+        {
+            type: "input",
+            message: "What is the Manager's office number?",
+            name: "officeNumber"
+        }
+    ]).then(data => {
+        console.log("Manager Added!");
+        let manager = new Manager(data.name, data.id, data.email, data.officeNumber);
+        employees.push(manager);
+        addEmployee();
+    })
+};
+
+// Creating Engineer ---------------------------------------------------------------------------------------
+function createEngineer() {
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "What is the Engineer's name?",
+            name: "name"
+        },
+        {
+            type: "input",
+            message: "What is the Engineer's id?",
+            name: "id"
+        },
+        {
+            type: "input",
+            message: "What is the Engineer's email?",
+            name: "email"
+        },
+        {
+            type: "input",
+            message: "What is the Engineer's Github username?",
+            name: "gitHub"
+        }
+    ]).then(data => {
+        console.log("Engineer Added!");
+        let engineer = new Engineer(data.name, data.id, data.email, data.gitHub);
+        employees.push(engineer);
+        addEmployee();
+    })
+};
+
+// Creating Intern ---------------------------------------------------------------------------------------
+function createIntern() {
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "What is the Intern's name?",
+            name: "name"
+        },
+        {
+            type: "input",
+            message: "What is the Intern's id?",
+            name: "id"
+        },
+        {
+            type: "input",
+            message: "What is the Intern's email?",
+            name: "email"
+        },
+        {
+            type: "input",
+            message: "What is the Intern's school name?",
+            name: "school"
+        }
+    ]).then(data => {
+        console.log("Intern Added!");
+        let intern = new Intern(data.name, data.id, data.email, data.school);
+        employees.push(intern);
+        addEmployee();
     })
 };
 

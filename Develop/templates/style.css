@@ -1,0 +1,35 @@
+/*  #2E1114 #501B1D #64485C #83677B #ADADAD */
+
+body{
+    background-color: rgb(199, 199, 199);
+}
+
+.container {
+    margin-top: 80px;
+}
+
+.jumbotron {
+    background-color: #2E1114;
+    color: white;
+}
+
+.employee-card {
+    background-color: #501B1D;
+    margin-right: 30px;
+}
+
+.list-group-item {
+    background-color: rgb(236, 234, 234);
+}
+
+.card-header {
+    color: rgb(0, 0, 0);
+}
+
+a {
+    color: #ADADAD;
+}
+
+.card-title {
+    text-align: center;
+}
